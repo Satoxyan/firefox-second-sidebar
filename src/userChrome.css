@@ -1,0 +1,100 @@
+/* Define variables for easy adjustments */
+:root {
+    --sidebar-transition-speed: 0.2s;
+    --text-fade-speed: 0.5s;
+
+    --sidebar-collapsed: 1px;
+    --sidebar-hover-normal: 50px;
+    --sidebar-hover-expanded: 250px;
+}
+
+/* ========================= */
+/* Sidebar collapsed */
+/* ========================= */
+#sidebar-main {
+    width: var(--sidebar-collapsed) !important;
+    margin-right: 0px !important;
+    z-index: 4 !important;
+
+    background: transparent !important;
+
+    transition:
+        width var(--sidebar-transition-speed),
+        margin-right var(--sidebar-transition-speed),
+        background var(--sidebar-transition-speed) !important;
+
+    transition-delay: 0.2s !important;
+}
+
+/* ========================= */
+/* Expand sidebar OFF */
+/* ========================= */
+#sidebar-main:hover {
+    width: var(--sidebar-hover-normal) !important;
+    margin-right: calc(var(--sidebar-collapsed) - var(--sidebar-hover-normal)) !important;
+
+    /* 🔥 THIS IS THE KEY */
+    background: var(--toolbar-bgcolor) !important;
+
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4) !important;
+    transition-delay: 0.2s !important;
+}
+
+/* ========================= */
+/* Expand sidebar ON */
+/* ========================= */
+:root:has(#tabbrowser-tabs[expanded]) #sidebar-main:hover {
+    width: var(--sidebar-hover-expanded) !important;
+    margin-right: calc(var(--sidebar-collapsed) - var(--sidebar-hover-expanded)) !important;
+
+    background: var(--toolbar-bgcolor) !important;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* ========================= */
+/* Tab text fade */
+/* ========================= */
+.tabbrowser-tab .tab-text {
+    opacity: 0;
+    transition: opacity var(--text-fade-speed) ease-in-out !important;
+}
+
+#sidebar-main:hover .tabbrowser-tab .tab-text {
+    opacity: 1 !important;
+}
+
+/* ========================= */
+/* Tab sizing */
+/* ========================= */
+#sidebar-main:hover .tabbrowser-tab {
+    width: auto !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* ========================= */
+/* Pinned tabs */
+/* ========================= */
+#vertical-pinned-tabs-container {
+    grid-template-columns: none !important;
+}
+
+#tabbrowser-tabs[expanded] > #vertical-pinned-tabs-container-separator {
+    display: block !important;
+}
+
+#vertical-pinned-tabs-container:empty + #vertical-pinned-tabs-container-separator {
+    display: none !important;
+}
+
+/* Close button */
+#tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-close-button {
+    display: none !important;
+}
+
+/* Uniform padding */
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab {
+    padding-block: 0px !important;
+}
+
+/* END */
