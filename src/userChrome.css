@@ -86,7 +86,13 @@
 
 /* Close button */
 #tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-close-button {
-    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#tabbrowser-tabs[orient="vertical"]:not([expanded]) .tabbrowser-tab:hover .tab-close-button {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Uniform padding */
