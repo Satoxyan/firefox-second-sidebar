@@ -35,8 +35,6 @@
 
     /* 🔥 THIS IS THE KEY */
     background: var(--toolbar-bgcolor) !important;
-
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4) !important;
     transition-delay: 0.2s !important;
 }
 
@@ -47,8 +45,7 @@
     width: var(--sidebar-hover-expanded) !important;
     margin-right: calc(var(--sidebar-collapsed) - var(--sidebar-hover-expanded)) !important;
 
-    background: var(--toolbar-bgcolor) !important;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.45) !important;
+    background: var(--toolbar-bgcolor) !important;;
 }
 
 /* ========================= */
