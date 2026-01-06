@@ -1,7 +1,7 @@
 /* Define variables for easy adjustments */
-:root {
+:root[sizemode="fullscreen"] {
     --sidebar-transition-speed: 0.2s;
-    --text-fade-speed: 1.1s;
+    --text-fade-speed: 0.5s;
 
     --sidebar-collapsed: 1px;
     --sidebar-hover-normal: 50px;
@@ -11,7 +11,7 @@
 /* ========================= */
 /* Sidebar collapsed */
 /* ========================= */
-#sidebar-main {
+:root[sizemode="fullscreen"] #sidebar-main {
     width: var(--sidebar-collapsed) !important;
     margin-right: 0px !important;
     z-index: 4 !important;
@@ -23,17 +23,16 @@
         margin-right var(--sidebar-transition-speed),
         background var(--sidebar-transition-speed) !important;
 
-    transition-delay: 0.5s !important;
+    transition-delay: 0.2s !important;
 }
 
 /* ========================= */
 /* Expand sidebar OFF */
 /* ========================= */
-#sidebar-main:hover {
+:root[sizemode="fullscreen"] #sidebar-main:hover {
     width: var(--sidebar-hover-normal) !important;
     margin-right: calc(var(--sidebar-collapsed) - var(--sidebar-hover-normal)) !important;
 
-    /* 🔥 THIS IS THE KEY */
     background: var(--toolbar-bgcolor) !important;
     transition-delay: 0.2s !important;
 }
@@ -41,29 +40,29 @@
 /* ========================= */
 /* Expand sidebar ON */
 /* ========================= */
-:root:has(#tabbrowser-tabs[expanded]) #sidebar-main:hover {
+:root[sizemode="fullscreen"]:has(#tabbrowser-tabs[expanded]) #sidebar-main:hover {
     width: var(--sidebar-hover-expanded) !important;
     margin-right: calc(var(--sidebar-collapsed) - var(--sidebar-hover-expanded)) !important;
 
-    background: var(--toolbar-bgcolor) !important;;
+    background: var(--toolbar-bgcolor) !important;
 }
 
 /* ========================= */
 /* Tab text fade */
 /* ========================= */
-.tabbrowser-tab .tab-text {
+:root[sizemode="fullscreen"] .tabbrowser-tab .tab-text {
     opacity: 0;
     transition: opacity var(--text-fade-speed) ease-in-out !important;
 }
 
-#sidebar-main:hover .tabbrowser-tab .tab-text {
+:root[sizemode="fullscreen"] #sidebar-main:hover .tabbrowser-tab .tab-text {
     opacity: 1 !important;
 }
 
 /* ========================= */
 /* Tab sizing */
 /* ========================= */
-#sidebar-main:hover .tabbrowser-tab {
+:root[sizemode="fullscreen"] #sidebar-main:hover .tabbrowser-tab {
     width: auto !important;
     min-width: 100% !important;
     max-width: 100% !important;
@@ -72,30 +71,28 @@
 /* ========================= */
 /* Pinned tabs */
 /* ========================= */
-#vertical-pinned-tabs-container {
+:root[sizemode="fullscreen"] #vertical-pinned-tabs-container {
     grid-template-columns: none !important;
 }
 
-#tabbrowser-tabs[expanded] > #vertical-pinned-tabs-container-separator {
+:root[sizemode="fullscreen"] #tabbrowser-tabs[expanded] > #vertical-pinned-tabs-container-separator {
     display: block !important;
 }
 
-#vertical-pinned-tabs-container:empty + #vertical-pinned-tabs-container-separator {
+:root[sizemode="fullscreen"] #vertical-pinned-tabs-container:empty
++ #vertical-pinned-tabs-container-separator {
     display: none !important;
 }
 
 /* Close button */
+:root[sizemode="fullscreen"]
 #tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-close-button {
-    opacity: 0;
-    pointer-events: none;
+    display: none !important;
 }
 
-#tabbrowser-tabs[orient="vertical"]:not([expanded]) .tabbrowser-tab:hover .tab-close-button {
-    opacity: 1;
-    pointer-events: auto;
-}
 
 /* Uniform padding */
+:root[sizemode="fullscreen"]
 #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab {
     padding-block: 0px !important;
 }
